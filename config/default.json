@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb://user123:user123@ds029541.mlab.com:29541/mern68",
+  "jwtPrivateToken": "mySecretToken"
+}
