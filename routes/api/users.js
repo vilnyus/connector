@@ -26,13 +26,11 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log('error happened.');
       return res.status(400).json({ errors: errors.array() });
     }
 
     const { name, email, password } = req.body;
 
-    console.log('registered user password: ', password);
     try {
       // See if the user exists
       let user = await User.findOne({ email });
@@ -61,10 +59,7 @@ router.post(
 
       user.password = await bcrypt.hash(password, salt);
 
-      console.log('registered user password after hash: ', user.password);
       await user.save();
-
-      // console.log(User.findOne({ email }));
 
       // Return jsonwebtoken
       const payload = {

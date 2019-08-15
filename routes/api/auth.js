@@ -34,7 +34,6 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log('error happened.');
       return res.status(400).json({ errors: errors.array() });
     }
 
@@ -49,7 +48,6 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: 'Invalid Credentials.' }] });
       }
-      console.log(user);
 
       const isMatch = await bcrypt.compare(password, user.password);
 
